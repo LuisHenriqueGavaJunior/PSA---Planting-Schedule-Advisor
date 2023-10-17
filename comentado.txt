@@ -1,0 +1,23 @@
+# Exibindo as informações obtidas pelo WebBot
+# print('Tempo:', Tempo)
+# print(f'Temperatura: {Temperatura:.2f}')
+# print('Umidade:', Umidade)
+
+====================================================
+
+#icone do projeto
+# Image_icon = PhotoImage(file='imagens/icone')
+# root.iconphoto(False, Image_icon) 
+
+====================================================
+
+# print(Requisicao_dic)
+
+====================================================
+
+# Pegando a previsão dos próximos 5 dias
+# requisicaoprevisao = requests.get(LinkPrevisao)
+# previsao = requisicaoprevisao.json()
+# print(previsao)
+
+====================================================
