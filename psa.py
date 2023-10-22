@@ -19,11 +19,11 @@ root.resizable(True, True)
 
 def zonatempo():
 
-   cidade = textfield.get()
+   # cidade = textfield.get()
 
-   geolocator = Nominatim(user_agent='geoapi')
-   localizacao = geolocator.geocode(cidade)
-   obj = Timez
+   # geolocator = Nominatim(user_agent='geoapi')
+   # localizacao = geolocator.geocode(cidade)
+   # obj = TimezoneFinder
 
 
    # Criando as variáveis iniciais

@@ -3,5 +3,5 @@ Comandos para instalar as bibliotecas na máquina
 py -m pip install requests
 py -m pip install pytz
 py -m pip install geopy
-py -m pip install timezonefinder
+pip install timezonefinder==3.4.2
 py -m pip install pillow
