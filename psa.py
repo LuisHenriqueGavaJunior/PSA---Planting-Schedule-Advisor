@@ -2,25 +2,40 @@ import requests
 from tkinter import *
 import tkinter as tk
 from geopy.geocoders import Nominatim
-from tkinter import ttk, messagebox
 from datetime import *
-import pytz
-from PIL import Image, ImageTk
+import locale
 
+locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
 
 # Tela base
-
 try:
    root=Tk()
    root.title('PSA')
-   root.geometry('890x470+300+300')
+   root.geometry('990x570+400+400')
    root.configure(bg='#203243')
-   root.resizable(True, True)
+   root.resizable(False, False)
 
+   def mostrarjaneladicas():
+    root.withdraw()  # Esconda a janela principal
+    dicasjan.deiconify()  # Exiba a segunda janela
+
+   def voltartelainicial():
+    dicasjan.withdraw()  # Esconda a segunda janela
+    root.deiconify()  # Exiba a janela principal
+
+   def atualizar_data():
+    # Função para atualizar a data
+    data_atual = datetime.now()
+    data_formatada = data_atual.strftime("%d/%m/%Y -")
+    dia_da_semana = data_atual.strftime(" %A")
+
+    hora_atual = datetime.now().strftime("%H:%M")
+    label_hora.config(text=hora_atual, fg='white', bg='#203243')
+    label_data.config(text=data_formatada + dia_da_semana, fg='white', bg='#203243')
+    root.after(1000, atualizar_data) 
 
    def zonatempo():
-
-   # Criando as variáveis iniciais
+   # Criando o botão para pegar as informações baseadas na localização do usuário
 
     response = requests.get("https://ipinfo.io")
     data = response.json()
@@ -43,8 +58,6 @@ try:
     Tempo = Requisicao_dic['weather'][0]['description']
     Temperaturabruta = Requisicao_dic['main']['temp']-273.15
     Umidade = Requisicao_dic['main']['humidity']
-
-
 
    # Pegando a previsão do tempo dos próximos dias
     Requisicao2 = requests.get(LinkPrevisao)
@@ -90,47 +103,121 @@ try:
 
     tempolab.config(text=(Tempo))
     temperaturalab.config(text=(Temperatura, '°C'))
-    umidadelab.config(text=(Umidade,'%'))
+    umidadelab.config(text=(Umidade, '%'))
     latitudelab.config(text=(Latitude))
     longitudelab.config(text=(Longitude))
 
-   dadostempobot = tk.Button(root, text="Capturar informações", command=zonatempo)
+
+   # Tela inicial
+   dadostempobot = tk.Button(root, text="Capturar informações por localização", command=zonatempo)
    dadostempobot.pack()
-   dadostempobot.place(x=50, y=260)
+   dadostempobot.place(x=50, y=300)
 
-   label1=Label(root, text='Tempo', font=('Helvetica', 11), fg='white', bg='#203243')
-   label1.place(x=50, y=120)
+   dicasbotao = tk.Button(root, text="Abrir Outra Janela", command=mostrarjaneladicas)
+   dicasbotao.pack()
+   dicasbotao.place(x=600, y=300)
 
-   label2=Label(root, text='Temperatura', font=('Helvetica', 11), fg='white', bg='#203243')
-   label2.place(x=50, y=140)
-
-   label3=Label(root, text='Umidade', font=('Helvetica', 11), fg='white', bg='#203243')
-   label3.place(x=50, y=160)
-
-   label4=Label(root, text='Latitude', font=('Helvetica', 11), fg='white', bg='#203243')
-   label4.place(x=50, y=180)
-
-   label5=Label(root, text='Longitude', font=('Helvetica', 11), fg='white', bg='#203243')
-   label5.place(x=50, y=200)
+   pesquisaarea = tk.Canvas(root, width=1500, height=110)
+   pesquisaarea.place(x=0, y=0)
+   pesquisaarea.create_rectangle (0, 0, 986, 500, fill="#203243", width=2)
 
 
+   label1=Label(root, text='Tempo', font=('Helvetica', 13), fg='white', bg='#203243')
+   label1.place(x=50, y=130)
 
-   tempolab = Label(root, font=('Helvetica', 11), fg='white', bg='#203243')
-   tempolab.place(x=170, y=120)
+   label2=Label(root, text='Temperatura', font=('Helvetica', 13), fg='white', bg='#203243')
+   label2.place(x=50, y=160)
 
-   temperaturalab = Label(root, font=('Helvetica', 11), fg='white', bg='#203243')
-   temperaturalab.place(x=170, y=140)
+   label3=Label(root, text='Umidade', font=('Helvetica', 13), fg='white', bg='#203243')
+   label3.place(x=50, y=190)
 
-   umidadelab = Label(root, font=('Helvetica', 11), fg='white', bg='#203243')
-   umidadelab.place(x=170, y=160)
+   label4=Label(root, text='Latitude', font=('Helvetica', 13), fg='white', bg='#203243')
+   label4.place(x=50, y=220)
 
-   latitudelab = Label(root, font=('Helvetica', 11), fg='white', bg='#203243')
-   latitudelab.place(x=170, y=180)
+   label5=Label(root, text='Longitude', font=('Helvetica', 13), fg='white', bg='#203243')
+   label5.place(x=50, y=250)
 
-   longitudelab = Label(root, font=('Helvetica', 11), fg='white', bg='#203243')
-   longitudelab.place(x=170, y=200)
-   
+   tempolab = Label(root, font=('Helvetica', 13), fg='white', bg='#203243')
+   tempolab.place(x=170, y=130)
 
+   temperaturalab = Label(root, font=('Helvetica', 13), fg='white', bg='#203243')
+   temperaturalab.place(x=170, y=160)
+
+   umidadelab = Label(root, font=('Helvetica', 13), fg='white', bg='#203243')
+   umidadelab.place(x=170, y=190)
+
+   latitudelab = Label(root, font=('Helvetica', 13), fg='white', bg='#203243')
+   latitudelab.place(x=170, y=220)
+
+   longitudelab = Label(root, font=('Helvetica', 13), fg='white', bg='#203243')
+   longitudelab.place(x=170, y=250)
+
+
+   previsaoarea = tk.Canvas(root, width=160, height=200)
+   previsaoarea.place(x=50, y=350)
+   previsaoarea.create_rectangle (0.5, 0.5, 200, 200, fill="#14212e")
+
+   previsaoarea2 = tk.Canvas(root, width=160, height=200)
+   previsaoarea2.place(x=230, y=350)
+   previsaoarea2.create_rectangle (0.5, 0.5, 200, 200, fill="#14212e")
+
+   previsaoarea3 = tk.Canvas(root, width=160, height=200)
+   previsaoarea3.place(x=410, y=350)
+   previsaoarea3.create_rectangle (0.5, 0.5, 200, 200, fill="#14212e")
+
+   previsaoarea4 = tk.Canvas(root, width=160, height=200)
+   previsaoarea4.place(x=590, y=350)
+   previsaoarea4.create_rectangle (0.5, 0.5, 200, 200, fill="#14212e")
+
+   previsaoarea5 = tk.Canvas(root, width=160, height=200)
+   previsaoarea5.place(x=770, y=350)
+   previsaoarea5.create_rectangle (0.5, 0.5, 200, 200, fill="#14212e")
+
+   label_data = tk.Label(root, text="", font=("Helvetica", 16))
+   label_hora = tk.Label(root, text="", font=("Helvetica", 30))
+   label_data.place(x=728, y=125)
+   label_hora.place(x=835, y=160)
+   atualizar_data()
+
+
+
+
+
+
+
+
+
+
+
+   # Tela de dicas
+   dicasjan = tk.Toplevel(root)
+   dicasjan.title("PSA")
+   dicasjan.withdraw() 
+   dicasjan.geometry('990x570+400+400')
+   dicasjan.configure(bg='#203243')
+   dicasjan.resizable(False, False)
+
+   titulodicas = tk.Label(dicasjan, text="Informações e dicas sobre a cultura do amendoim", font=('Helvetica', 11), fg='white', bg='#203243')
+   titulodicas.place(x=280, y=10)
+
+   pesquisaarea = tk.Canvas(dicasjan, width=1500, height=110)
+   pesquisaarea.place(x=0, y=0)
+   pesquisaarea.create_rectangle (0, 0, 986, 500, fill="#203243", width=2)
+
+   botaoinicio = tk.Button(dicasjan, text="Voltar para Janela Principal", command=voltartelainicial)
+   botaoinicio.place(x=25, y=350)
+
+   relatoriolocal = tk.Canvas(dicasjan, width=260, height=390)
+   relatoriolocal.place(x=200, y=150)
+   relatoriolocal.create_rectangle (0.5, 0.5, 400, 400, fill="#14212e")
+   labelrelatoriolocal=Label(dicasjan, text='Relatório do local', font=('Helvetica', 13), fg='white', bg='#203243')
+   labelrelatoriolocal.place(x=200, y=170)
+
+   relatoriogeral = tk.Canvas(dicasjan, width=260, height=390)
+   relatoriogeral.place(x=540, y=150)
+   relatoriogeral.create_rectangle (0.5, 0.5, 400, 400, fill="#14212e")
+   labelrelatoriogeral=Label(dicasjan, text='Relatório Geral', font=('Helvetica', 13), fg='white', bg='#203243')
+   labelrelatoriogeral.place(x=540, y=170)
 
 
 # Iniciando tela
