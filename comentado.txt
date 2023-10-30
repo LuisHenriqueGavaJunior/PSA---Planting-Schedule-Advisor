@@ -1,4 +1,0 @@
-#icone do projeto
-# Image_icon = PhotoImage(file='imagens/icone')
-# root.iconphoto(False, Image_icon) 
-
