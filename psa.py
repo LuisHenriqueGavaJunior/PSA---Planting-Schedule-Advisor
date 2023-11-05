@@ -4,6 +4,9 @@ import tkinter as tk
 from datetime import *
 import locale
 from geopy.geocoders import Nominatim
+import csv
+from tkinter import messagebox
+
 
 locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
 
@@ -15,9 +18,13 @@ try:
    root.configure(bg='#EAC696')
    root.resizable(False, False)
 
-   def mostrarjaneladicas():
+   def mostrarjanelarelatorios():
     root.withdraw()  # Esconda a janela principal
     relatjanela.deiconify()  # Exiba a segunda janela
+
+   def mostrarjaneladicas():
+    root.withdraw()  # Esconda a janela principal
+    dicasjanela.deiconify()  # 
 
    def voltartelainicial():
     relatjanela.withdraw()  # Esconda a segunda janela
@@ -119,8 +126,10 @@ try:
 
     hora_atual = datetime.now().strftime("%H:%M")
     horalabrelatorio.config(text=('Hora:', hora_atual), fg='black', bg='#765827')
-    datalabrelatorio.config(text=(data_formatada + dia_da_semana), fg='black', bg='#765827')
+    datalabrelatorio.config(text=(data_formatada, dia_da_semana), fg='black', bg='#765827')
 
+    data_relatorio = data_atual.strftime("%d/%m/%Y")
+    dia_relatorio = data_atual.strftime("%A")
     # Teste para ver recomendação do plantio
 
     momento_para_plantio = "" 
@@ -129,6 +138,7 @@ try:
     motivolinha3 = ""
     motivolinha4 = ""
     motivolinha5 = ""
+    motivo = ""
 
     if (mes == '01' or mes == '02' or mes == '07' or mes == '08' or mes == '12') and (Estado == "Acre" or Estado == "Roraima" or Estado == "Amapá" or Estado == "Amazonas" or Estado == "Rondônia"):
       momento_para_plantio = "Condições ruins:"
@@ -137,6 +147,7 @@ try:
       motivolinha3 = "Além disso, não estamos num momento"
       motivolinha4 = "adequado para o plantio desta cultura."
       motivolinha5 = ""
+      motivo = "O local onde o plantio será realizado não é bom para o amendoim. Além disso, não estamos num momento adequado para o plantio desta cultura."
     
     elif (mes == '03' or mes == '04' or mes == '09' or mes == '10') and (Estado == "Acre" or Estado == "Roraima" or Estado == "Amapá" or Estado == "Amazonas" or Estado == "Rondônia"):
       momento_para_plantio = "Condições medianas:"
@@ -145,6 +156,7 @@ try:
       motivolinha3 = "época para esta cultura. É necessário"
       motivolinha4 = "uma análise mais profunda com um"
       motivolinha5 = "profissional antes de começar a plantar."
+      motivo = "O local onde o plantio será realizado é ruim para o amendoim, mas é uma boa época para esta cultura. É necessário uma análise mais profunda com um profissional antes de começar a plantar."
 
     elif (mes == '01' or mes == '02' or mes == '07' or mes == '08' or mes == '12') and (Estado == "Bahia" or Estado == "Pernambuco" or Estado == "Maranhão" or Estado == "Piauí" or Estado == "Ceará"):
       momento_para_plantio = "Condições medianas:"
@@ -153,6 +165,7 @@ try:
       motivolinha3 = "época para esta cultura. É recomendável"
       motivolinha4 = "esperar uma época melhor para começar a"
       motivolinha5 = "plantar."
+      motivo = "O local onde o plantio será realizado é bom para o amendoim, mas é uma péssima época para esta cultura. É recomendável esperar uma época melhor para começar a plantar."
 
     elif (mes == '01' or mes == '02' or mes == '07' or mes == '08' or mes == '12') and (Estado == "São Paulo" or Estado == "Minas Gerais" or Estado == "Goiás" or Estado == "Mato Grosso do Sul" or Estado == "Santa Catarina"):
       momento_para_plantio = "Condições medianas:"
@@ -161,6 +174,7 @@ try:
       motivolinha3 = "péssima época para esta cultura."
       motivolinha4 = "É recomendável esperar uma época melhor"
       motivolinha5 = "para começar a plantar."
+      motivo = "O local onde o plantio será realizado é excelente para o amendoim, mas é uma péssima época para esta cultura. É recomendável esperar uma época melhor para começar a plantar."
 
     elif (mes == '05' or mes == '06' or mes == '11') and (Estado == "Acre" or Estado == "Roraima" or Estado == "Amapá" or Estado == "Amazonas" or Estado == "Rondônia"):
       momento_para_plantio = "Condições medianas:"
@@ -169,6 +183,7 @@ try:
       motivolinha3 = "excelente época para esta cultura."
       motivolinha4 = "É necessário uma análise mais profunda com"
       motivolinha5 = "um profissional antes de começar a plantar."
+      motivo = "O local onde o plantio será realizado é ruim para o amendoim, mas é uma excelente época para esta cultura. É necessário uma análise mais profunda com um profissional antes de começar a plantar."
 
     elif (mes == '03' or mes == '04' or mes == '09' or mes == '10') and (Estado == "Bahia" or Estado == "Pernambuco" or Estado == "Maranhão" or Estado == "Piauí" or Estado == "Ceará"):
       momento_para_plantio = "Condições boas:"
@@ -177,6 +192,7 @@ try:
       motivolinha3 = "época para esta cultura."
       motivolinha4 = "É um bom momento para começar a"
       motivolinha5 = "plantar!"
+      motivo = "O local onde o plantio será realizado é bom para o amendoim, e é uma boa época para esta cultura. É um bom momento para começar a plantar!"
 
     elif (mes == '03' or mes == '04' or mes == '09' or mes == '10') and (Estado == "São Paulo" or Estado == "Minas Gerais" or Estado == "Goiás" or Estado == "Mato Grosso do Sul" or Estado == "Santa Catarina"):
       momento_para_plantio = "Condições muito boas:"
@@ -185,6 +201,7 @@ try:
       motivolinha3 = "uma boa época para esta cultura."
       motivolinha4 = "É um ótimo momento para começar"
       motivolinha5 = "a plantar!"
+      motivo = "O local onde o plantio será realizado é excelente para o amendoim, e é uma boa época para esta cultura. É um ótimo momento para começar a plantar!"
 
     elif (mes == '05' or mes == '06' or mes == '11') and (Estado == "Bahia" or Estado == "Pernambuco" or Estado == "Maranhão" or Estado == "Piauí" or Estado == "Ceará"):
       momento_para_plantio = "Condições muito boas:"
@@ -193,6 +210,7 @@ try:
       motivolinha3 = "época para esta cultura."
       motivolinha4 = "É um ótimo momento para começar"
       motivolinha5 = "a plantar!"
+      motivo = "O local onde o plantio será realizado é bom para o amendoim, e é a melhor época para esta cultura. É um ótimo momento para começar a plantar!"
 
     elif (mes == '05' or mes == '06' or mes == '11') and (Estado == "São Paulo" or Estado == "Minas Gerais" or Estado == "Goiás" or Estado == "Mato Grosso do Sul" or Estado == "Santa Catarina"):
       momento_para_plantio = "Condições perfeitas:"
@@ -201,6 +219,7 @@ try:
       motivolinha3 = "momento é perfeito para o plantio."
       motivolinha4 = "Essas são as melhores condições"
       motivolinha5 = "possíveis para começar a plantar!"
+      motivo = "O local onde o plantio será realizado é excelente para o amendoim, e o momento é perfeito para o plantio. Essas são as melhores condições possíveis para começar a plantar!"
 
     else: 
       momento_para_plantio = "Condições desconhecidas"
@@ -221,15 +240,27 @@ try:
     horalabrelatoriogeral.config(text=('Hora:', hora_atual), fg='black', bg='#765827')
     datalabrelatoriogeral.config(text=(data_formatada + dia_da_semana), fg='black', bg='#765827')
 
+    try:
+        with open("relatorio", 'w', newline='') as arquivo_csv:
+          escritor = csv.writer(arquivo_csv)
+          escritor.writerow([data_relatorio, dia_relatorio, Tempo, Temperatura, Umidade, Latitude, Longitude, Estado, momento_para_plantio, motivo])
+
+        messagebox.showinfo('Sucesso', 'Relatórios exportados para o arquivo relatorios.csv com sucesso!')
+    except Exception as e:
+        messagebox.showerror('Erro', f'Ocorreu um erro ao exportar o relatório: {e}')
 
    # Tela inicial
    dadostempobot = tk.Button(root, text="Capturar informações", command=zonatempo)
    dadostempobot.pack()
    dadostempobot.place(x=50, y=300)
 
-   dicasbotao = tk.Button(root, text="Analise de campo", command=mostrarjaneladicas)
+   relatbotao = tk.Button(root, text="Analise de campo", command=mostrarjanelarelatorios)
+   relatbotao.pack()
+   relatbotao.place(x=829, y=300)
+
+   dicasbotao = tk.Button(root, text=" Dicas de manejo ", command=mostrarjaneladicas)
    dicasbotao.pack()
-   dicasbotao.place(x=829, y=300)
+   dicasbotao.place(x=829, y=265)
 
    pesquisaarea = tk.Canvas(root, width=1500, height=110)
    pesquisaarea.place(x=0, y=0)
@@ -323,6 +354,7 @@ try:
    botaorelatorio.pack()
    botaorelatorio.place(x=25, y=300)
 
+
    relatoriolocal = tk.Canvas(relatjanela, width=260, height=390)
    relatoriolocal.place(x=200, y=150)
    relatoriolocal.create_rectangle (0.5, 0.5, 400, 400, fill="#765827")
@@ -404,8 +436,119 @@ try:
    motivoplantiolab5 = Label(relatjanela, font=('Helvetica', 10), fg='black', bg='#765827')
    motivoplantiolab5.place(x=555, y=500)
 
+
+# Tela de dicas
+   dicasjanela = tk.Toplevel(root)
+   dicasjanela.title("PSA")
+   dicasjanela.withdraw() 
+   dicasjanela.geometry('990x570+400+400')
+   dicasjanela.configure(bg='#EAC696')
+   dicasjanela.resizable(False, False)
+
+   pesquisaarea = tk.Canvas(dicasjanela, width=1500, height=110)
+   pesquisaarea.place(x=0, y=0)
+   pesquisaarea.create_rectangle (0, 0, 986, 500, fill="#765827", width=2)
+
+   botaoinicio = tk.Button(dicasjanela, text="Voltar para Janela Principal", command=voltartelainicial)
+   botaoinicio.place(x=770, y=405)
+
+# ============Fileira 1
+
+   dica1quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica1quadro.place(x=50, y=150)
+   dica1quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica1=Label(dicasjanela, text='Preparação do solo', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica1.place(x=75, y=165)
+   botaodica1 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica1.place(x=127, y=210)
+
+   dica2quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica2quadro.place(x=280, y=150)
+   dica2quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica2=Label(dicasjanela, text='Seleção de sementes', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica2.place(x=300, y=165)
+   botaodica2 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica2.place(x=357, y=210)
+
+   dica3quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica3quadro.place(x=510, y=150)
+   dica3quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica3=Label(dicasjanela, text='Cultivares porte ereto', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica3.place(x=525, y=165)
+   botaodica3 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica3.place(x=587, y=210)
+
+   dica4quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica4quadro.place(x=740, y=150)
+   dica4quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica4=Label(dicasjanela, text='Cultivares porte rasteiro', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica4.place(x=747, y=165)
+   botaodica4 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica4.place(x=817, y=210)
+
+# ============Fileira 2
+
+   dica5quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica5quadro.place(x=50, y=270)
+   dica5quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica5=Label(dicasjanela, text='Plantio', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica5.place(x=124, y=285)
+   botaodica5 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica5.place(x=127, y=330)
+
+   dica6quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica6quadro.place(x=280, y=270)
+   dica6quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica6=Label(dicasjanela, text='Irrigação', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica6.place(x=344, y=285)
+   botaodica6 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica6.place(x=357, y=330)
+   
+   dica7quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica7quadro.place(x=510, y=270)
+   dica7quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica7=Label(dicasjanela, text='Adubagem', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica7.place(x=565, y=285)
+   botaodica7 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica7.place(x=587, y=330)
+
+   dica8quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica8quadro.place(x=740, y=270)
+   dica8quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica8=Label(dicasjanela, text='Controle de pragas', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica8.place(x=765, y=285)
+   botaodica8 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica8.place(x=817, y=330)
+
+# ============Fileira 3
+
+   dica9quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica9quadro.place(x=50, y=390)
+   dica9quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica9=Label(dicasjanela, text='Colheita', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica9.place(x=120, y=405)
+   botaodica9 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica9.place(x=127, y=450)
+
+   dica10quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica10quadro.place(x=280, y=390)
+   dica10quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica10=Label(dicasjanela, text='Pós-colheita', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica10.place(x=335, y=405)
+   botaodica10 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica10.place(x=357, y=450)
+   
+   dica11quadro = tk.Canvas(dicasjanela, width=200, height=100)
+   dica11quadro.place(x=510, y=390)
+   dica11quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
+   labeldica11=Label(dicasjanela, text='Variedades de amendoim', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
+   labeldica11.place(x=513, y=405)
+   botaodica11 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica11.place(x=587, y=450)
+
+
 # Iniciando tela
    root.mainloop()
    
-except Exception as erro:
-   print(f"Ocorreu um erro: {erro}")
+except Exception as e:
+  messagebox.showerror('Erro', f'Ocorreu um erro ao iniciar o projeto: {e}')
