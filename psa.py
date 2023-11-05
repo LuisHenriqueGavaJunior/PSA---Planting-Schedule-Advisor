@@ -6,6 +6,9 @@ import locale
 from geopy.geocoders import Nominatim
 import csv
 from tkinter import messagebox
+from tkinter import PhotoImage
+from PIL import Image, ImageTk
+from tkinter import ttk
 
 
 locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
@@ -17,6 +20,8 @@ try:
    root.geometry('990x570+400+400')
    root.configure(bg='#EAC696')
    root.resizable(False, False)
+   icone = tk.PhotoImage(file="imagens/icone.ppm")
+   root.iconphoto(True, icone)
 
    def mostrarjanelarelatorios():
     root.withdraw()  # Esconda a janela principal
@@ -249,6 +254,349 @@ try:
     except Exception as e:
         messagebox.showerror('Erro', f'Ocorreu um erro ao exportar o relatório: {e}')
 
+   def modal_dica1():
+    modal1 = tk.Toplevel(root)
+    modal1.title("Dica")
+    modal1.geometry("500x220")
+    modal1.resizable(False, False)
+    
+    espaco1 = ttk.Label(modal1, text="")
+    textodica1pt1 = ttk.Label(modal1, text="Antes de plantar, é necessário arar, gradear e nivelar o")
+    textodica1pt2 = ttk.Label(modal1, text="solo para criar uma superfície uniforme para as sementes.") 
+    textodica1pt3 = ttk.Label(modal1, text="A profundidade da aração deve ser de 20 a 30 cm, resultando") 
+    textodica1pt4 = ttk.Label(modal1, text="em um solo bem solto e bem ventilado.") 
+    textodica1pt5 = ttk.Label(modal1, text="A temperatura ideal do solo para o plantio varia de 21°C a 29°C.") 
+    textodica1pt6 = ttk.Label(modal1, text="Certifique-se de que o solo esteja aquecido o suficiente para") 
+    textodica1pt7 = ttk.Label(modal1, text="estimular a germinação das sementes.") 
+    
+    espaco1.pack()
+    textodica1pt1.pack()
+    textodica1pt2.pack()
+    textodica1pt3.pack()
+    textodica1pt4.pack()
+    textodica1pt5.pack()
+    textodica1pt6.pack()
+    textodica1pt7.pack()
+
+    botaofechar1 = ttk.Button(modal1, text="Fechar", command=modal1.destroy)
+    botaofechar1.pack(pady=20)
+
+   def modal_dica2():
+    modal2 = tk.Toplevel(root)
+    modal2.title("Dica")
+    modal2.geometry("500x190")
+    modal2.resizable(False, False)
+    
+    espaco2 = ttk.Label(modal2, text="")
+    textodica2pt1 = ttk.Label(modal2, text="É crucial escolher sementes de alta qualidade,")
+    textodica2pt2 = ttk.Label(modal2, text="garantindo que estejam saudáveis.") 
+    textodica2pt3 = ttk.Label(modal2, text="Além disso, as sementes devem ser tratadas") 
+    textodica2pt4 = ttk.Label(modal2, text="com fungicida antes do plantio para protegê-las") 
+    textodica2pt5 = ttk.Label(modal2, text="contra doenças.") 
+    textodica2pt6 = ttk.Label(modal2, text="") 
+    
+    espaco2.pack()
+    textodica2pt1.pack()
+    textodica2pt2.pack()
+    textodica2pt3.pack()
+    textodica2pt4.pack()
+    textodica2pt5.pack()
+    textodica2pt6.pack()
+    
+    botaofechar2 = ttk.Button(modal2, text="Fechar", command=modal2.destroy)
+    botaofechar2.pack()
+
+   def modal_dica3():
+    modal3 = tk.Toplevel(root)
+    modal3.title("Dica")
+    modal3.geometry("500x210")
+    modal3.resizable(False, False)
+    
+    espaco3 = ttk.Label(modal3, text="")
+    textodica3pt1 = ttk.Label(modal3, text="O espaçamento médio entre linhas recomendado é de 60 cm")
+    textodica3pt2 = ttk.Label(modal3, text="e a densidade de semeadura é de 18 a 20 sementes por") 
+    textodica3pt3 = ttk.Label(modal3, text="metro de linha.") 
+    textodica3pt4 = ttk.Label(modal3, text="Nas lavouras mecanizadas, é comum o plantio de três") 
+    textodica3pt5 = ttk.Label(modal3, text="linhas espaçadas de 50 a 55 cm, deixando-se um intervalo") 
+    textodica3pt6 = ttk.Label(modal3, text="de 70 cm, para a entrelinha de trânsito do trator.") 
+    textodica3pt7 = ttk.Label(modal3, text="") 
+    
+    espaco3.pack()
+    textodica3pt1.pack()
+    textodica3pt2.pack()
+    textodica3pt3.pack()
+    textodica3pt4.pack()
+    textodica3pt5.pack()
+    textodica3pt6.pack()
+    textodica3pt7.pack()
+    
+    botaofechar3 = ttk.Button(modal3, text="Fechar", command=modal3.destroy)
+    botaofechar3.pack()
+
+   def modal_dica4():
+    modal4 = tk.Toplevel(root)
+    modal4.title("Dica")
+    modal4.geometry("500x240")
+    modal4.resizable(False, False)
+    
+    espaco4 = ttk.Label(modal4, text="")
+    textodica4pt1 = ttk.Label(modal4, text="O espaçamento médio entre linhas deve ser de 80 a 90 cm, deixando-se cair")
+    textodica4pt2 = ttk.Label(modal4, text="14 a 15 sementes por metro. Ou seja, esses cultivares garantem sua máxima") 
+    textodica4pt3 = ttk.Label(modal4, text="produtividade com menos plantas por área do que os amendoins de porte ereto.") 
+    textodica4pt4 = ttk.Label(modal4, text="O esquema de plantio mais usual para cultivares rasteiros, no Sudeste brasileiro, é de") 
+    textodica4pt5 = ttk.Label(modal4, text="“linhas simples” com 90 cm de entrelinhas. Este espaçamento é o que melhor se adapta ao") 
+    textodica4pt6 = ttk.Label(modal4, text="arranquio mecanizado, produzindo um bom enleiramento das plantas.") 
+    textodica4pt7 = ttk.Label(modal4, text="Plantas de amendoim rasteiro podem apresentar variações no crescimento da parte aérea,") 
+    textodica4pt8 = ttk.Label(modal4, text="principalmente em função de fatores climáticos.") 
+
+    espaco4.pack()
+    textodica4pt1.pack()
+    textodica4pt2.pack()
+    textodica4pt3.pack()
+    textodica4pt4.pack()
+    textodica4pt5.pack()
+    textodica4pt6.pack()
+    textodica4pt7.pack()
+    textodica4pt8.pack()
+    
+    botaofechar4 = ttk.Button(modal4, text="Fechar", command=modal4.destroy)
+    botaofechar4.pack(pady=20)
+
+#====================================================
+
+   def modal_dica5():
+    modal5 = tk.Toplevel(root)
+    modal5.title("Dica")
+    modal5.geometry("500x130")
+    modal5.resizable(False, False)
+    
+    espaco5 = ttk.Label(modal5, text="")
+    textodica5pt1 = ttk.Label(modal5, text="As sementes de amendoim devem ser inseridas no solo a ")
+    textodica5pt2 = ttk.Label(modal5, text="uma profundidade de 3 a 5 cm, com a extremidade") 
+    textodica5pt3 = ttk.Label(modal5, text="voltada para baixo e o broto apontando para cima.") 
+    textodica5pt4 = ttk.Label(modal5, text="") 
+
+    espaco5.pack()
+    textodica5pt1.pack()
+    textodica5pt2.pack()
+    textodica5pt3.pack()
+    textodica5pt4.pack()
+    
+    botaofechar5 = ttk.Button(modal5, text="Fechar", command=modal5.destroy)
+    botaofechar5.pack()
+
+   def modal_dica6():
+    modal6 = tk.Toplevel(root)
+    modal6.title("Dica")
+    modal6.geometry("500x150")
+    modal6.resizable(False, False)
+    
+    espaco6 = ttk.Label(modal6, text="")
+    textodica6pt1 = ttk.Label(modal6, text="Após o plantio, é fundamental garantir que as sementes sejam regadas")
+    textodica6pt2 = ttk.Label(modal6, text="adequadamente para manter o solo úmido, evitando, no entanto, o encharcamento.") 
+    textodica6pt3 = ttk.Label(modal6, text="A irrigação deve ser realizada regularmente durante todo o período ") 
+    textodica6pt4 = ttk.Label(modal6, text="de crescimento da planta.") 
+    textodica6pt5 = ttk.Label(modal6, text="") 
+    
+    espaco6.pack()
+    textodica6pt1.pack()
+    textodica6pt2.pack()
+    textodica6pt3.pack()
+    textodica6pt4.pack()
+    textodica6pt5.pack()
+    
+    botaofechar6 = ttk.Button(modal6, text="Fechar", command=modal6.destroy)
+    botaofechar6.pack()
+
+   def modal_dica7():
+    modal7 = tk.Toplevel(root)
+    modal7.title("Dica")
+    modal7.geometry("500x200")
+    modal7.resizable(False, False)
+    
+    espaco7 = ttk.Label(modal7, text="")
+    textodica7pt1 = ttk.Label(modal7, text="A adubagem no plantio de amendoim é um aspecto essencial para")
+    textodica7pt2 = ttk.Label(modal7, text="promover o crescimento saudável e a produtividade da cultura.") 
+    textodica7pt3 = ttk.Label(modal7, text="É importante ressaltar que as recomendações de adubação podem variar dependendo") 
+    textodica7pt4 = ttk.Label(modal7, text="da região, das condições locais e das características da variedade de amendoim.") 
+    textodica7pt5 = ttk.Label(modal7, text="Portanto, é aconselhável consultar um agrônomo ou técnico agrícola para orientações") 
+    textodica7pt6 = ttk.Label(modal7, text="específicas e personalizadas para a sua plantação de amendoim.") 
+    textodica7pt7 = ttk.Label(modal7, text="") 
+    
+    espaco7.pack()
+    textodica7pt1.pack()
+    textodica7pt2.pack()
+    textodica7pt3.pack()
+    textodica7pt4.pack()
+    textodica7pt5.pack()
+    textodica7pt6.pack()
+    textodica7pt7.pack()
+    
+    botaofechar7 = ttk.Button(modal7, text="Fechar", command=modal7.destroy)
+    botaofechar7.pack()
+
+   def modal_dica8():
+    modal8 = tk.Toplevel(root)
+    modal8.title("Dica")
+    modal8.geometry("550x240")
+    modal8.resizable(False, False)
+    
+    espaco8 = ttk.Label(modal8, text="")
+    textodica8pt1 = ttk.Label(modal8, text="Durante o ciclo de crescimento do amendoim, é essencial manter o controle das plantas daninhas")
+    textodica8pt2 = ttk.Label(modal8, text="para evitar a competição por nutrientes e água.") 
+    textodica8pt3 = ttk.Label(modal8, text="Para o manejo eficaz das pragas na plantação de amendoim, é importante adotar práticas de") 
+    textodica8pt4 = ttk.Label(modal8, text="controle integrado, incluindo o monitoramento regular, o uso de variedades resistentes quando") 
+    textodica8pt5 = ttk.Label(modal8, text="disponíveis, o uso criterioso de inseticidas quando necessário, a rotação de culturas e a ") 
+    textodica8pt6 = ttk.Label(modal8, text="manutenção de boas práticas de manejo agrícola.") 
+    textodica8pt7 = ttk.Label(modal8, text="O controle biológico também pode ser uma opção sustentável para combater pragas em culturas de") 
+    textodica8pt8 = ttk.Label(modal8, text="amendoim.") 
+
+    
+    espaco8.pack()
+    textodica8pt1.pack()
+    textodica8pt2.pack()
+    textodica8pt3.pack()
+    textodica8pt4.pack()
+    textodica8pt5.pack()
+    textodica8pt6.pack()
+    textodica8pt7.pack()
+    textodica8pt8.pack()
+
+    
+    botaofechar8 = ttk.Button(modal8, text="Fechar", command=modal8.destroy)
+    botaofechar8.pack(pady=20)
+
+#====================================================
+
+   def modal_dica9():
+    modal9 = tk.Toplevel(root)
+    modal9.title("Dica")
+    modal9.geometry("580x260")
+    modal9.resizable(False, False)
+    
+    espaco9 = ttk.Label(modal9, text="")
+    espaco9_2 = ttk.Label(modal9, text="")
+    espaco9_3 = ttk.Label(modal9, text="")
+
+    textodica9pt1 = ttk.Label(modal9, text="A colheita do amendoim é realizada quando os frutos atingem a maturidade. Isso é indicado pelo")
+    textodica9pt2 = ttk.Label(modal9, text="amarelecimento das folhas e cascas, e pelas vagens que começam a secar. O momento ideal para a") 
+    textodica9pt3 = ttk.Label(modal9, text="colheita é quando cerca de 80% das vagens estão maduras.") 
+    textodica9pt4 = ttk.Label(modal9, text="Colheita manual: Em algumas regiões, a colheita do amendoim é realizada manualmente.") 
+    textodica9pt5 = ttk.Label(modal9, text="Os trabalhadores arrancam as plantas do solo e batem as vagens para soltá-las.") 
+    textodica9pt6 = ttk.Label(modal9, text="Colheita mecanizada: Em áreas maiores, a colheita mecanizada é comum. Máquinas escavadoras puxam") 
+    textodica9pt7 = ttk.Label(modal9, text="as plantas do solo e as depositam em fileiras. Em seguida, máquinas colheitadeiras retiram as vagens.") 
+    
+    espaco9.pack()
+    textodica9pt1.pack()
+    textodica9pt2.pack()
+    textodica9pt3.pack()
+    espaco9_2.pack()
+    textodica9pt4.pack()
+    textodica9pt5.pack()
+    espaco9_3.pack()
+    textodica9pt6.pack()
+    textodica9pt7.pack()
+    
+    botaofechar9 = ttk.Button(modal9, text="Fechar", command=modal9.destroy)
+    botaofechar9.pack(pady=20)
+
+   def modal_dica10():
+    modal10 = tk.Toplevel(root)
+    modal10.title("Dica")
+    modal10.geometry("550x400")
+    modal10.resizable(False, False)
+    
+    espaco10 = ttk.Label(modal10, text="")
+    espaco10_2 = ttk.Label(modal10, text="")
+    espaco10_3 = ttk.Label(modal10, text="")
+    espaco10_4 = ttk.Label(modal10, text="")
+    espaco10_5 = ttk.Label(modal10, text="")
+
+    textodica10pt1 = ttk.Label(modal10, text="Secagem: Após a colheita, as vagens de amendoim são deixadas ao sol para secar.")
+    textodica10pt2 = ttk.Label(modal10, text="Isso ajuda a reduzir o teor de umidade dos grãos, o que é importante para evitar ") 
+    textodica10pt3 = ttk.Label(modal10, text="o desenvolvimento de fungos e para a conservação dos produtos.") 
+    textodica10pt4 = ttk.Label(modal10, text="Armazenamento: Após a secagem, os grãos de amendoim são armazenados em locais") 
+    textodica10pt5 = ttk.Label(modal10, text="adequados, como celeiros ou armazéns, para evitar infestações por pragas e") 
+    textodica10pt6 = ttk.Label(modal10, text="garantir a manutenção da qualidade.") 
+    textodica10pt7 = ttk.Label(modal10, text="Limpeza: Antes de serem comercializados ou processados, os grãos de amendoim passam") 
+    textodica10pt8 = ttk.Label(modal10, text="por uma etapa de limpeza para remover detritos, sujeira e quaisquer impurezas.") 
+    textodica10pt9 = ttk.Label(modal10, text="Beneficiamento: Nessa etapa, os grãos de amendoim são separados das vagens e")     
+    textodica10pt10 = ttk.Label(modal10, text="preparados para comercialização ou processamento adicional.") 
+    textodica10pt11 = ttk.Label(modal10, text="Embalagem: Os grãos de amendoim beneficiados são embalados em sacos adequados para") 
+    textodica10pt12 = ttk.Label(modal10, text="o armazenamento ou para venda ao consumidor.") 
+
+    espaco10.pack()
+    textodica10pt1.pack()
+    textodica10pt2.pack()
+    textodica10pt3.pack()
+    espaco10_2.pack()
+    textodica10pt4.pack()
+    textodica10pt5.pack()
+    textodica10pt6.pack()
+    espaco10_3.pack()
+    textodica10pt7.pack()
+    textodica10pt8.pack()
+    espaco10_4.pack()
+    textodica10pt9.pack()
+    textodica10pt10.pack()
+    espaco10_5.pack()
+    textodica10pt11.pack()
+    textodica10pt12.pack()
+    
+    botaofechar10 = ttk.Button(modal10, text="Fechar", command=modal10.destroy)
+    botaofechar10.pack(pady=20)
+
+   def modal_dica11():
+    modal11 = tk.Toplevel(root)
+    modal11.title("Dica")
+    modal11.geometry("550x410")
+    modal11.resizable(False, False)
+    
+    espaco11 = ttk.Label(modal11, text="")
+    espaco11_2 = ttk.Label(modal11, text="")
+    espaco11_3 = ttk.Label(modal11, text="")
+    espaco11_4 = ttk.Label(modal11, text="")
+    espaco11_5 = ttk.Label(modal11, text="")
+    espaco11_6 = ttk.Label(modal11, text="")
+
+    textodica11pt1 = ttk.Label(modal11, text="Existem vários tipos de amendoim, diferindo em tamanho, forma, cor e sabor.")
+    textodica11pt2 = ttk.Label(modal11, text="Alguns dos principais tipos incluem:") 
+    textodica11pt3 = ttk.Label(modal11, text="Amendoim Comum ou Espanhol: É o tipo mais comum, com casca fina e vermelha,") 
+    textodica11pt4 = ttk.Label(modal11, text="usado na produção de pasta de amendoim, óleo e snacks.") 
+    textodica11pt5 = ttk.Label(modal11, text="Amendoim Tatuí: Possui sabor mais acentuado e um teor de óleo mais elevado,") 
+    textodica11pt6 = ttk.Label(modal11, text="sendo usado na produção de óleo e na culinária.") 
+    textodica11pt7 = ttk.Label(modal11, text="Amendoim Runner: Tem uma forma mais alongada e casca mais grossa, sendo") 
+    textodica11pt8 = ttk.Label(modal11, text="amplamente utilizado na produção de snacks, pasta de amendoim e óleo.")   
+    textodica11pt9 = ttk.Label(modal11, text="Amendoim Valência: Possui formato mais redondo e sabor suave, sendo") 
+    textodica11pt10 = ttk.Label(modal11, text="usado na produção de amendoim caramelizado e torrado.")   
+    textodica11pt11 = ttk.Label(modal11, text="Amendoim Doce Japonês: É popular na culinária japonesa, com um") 
+    textodica11pt12 = ttk.Label(modal11, text="revestimento de açúcar e sabor adocicado.")  
+
+    espaco11.pack()
+    textodica11pt1.pack()
+    textodica11pt2.pack()
+    espaco11_2.pack()
+    textodica11pt3.pack()
+    textodica11pt4.pack()
+    espaco11_3.pack()
+    textodica11pt5.pack()
+    textodica11pt6.pack()
+    espaco11_4.pack()
+    textodica11pt7.pack()
+    textodica11pt8.pack()
+    espaco11_5.pack()
+    textodica11pt9.pack()
+    textodica11pt10.pack()
+    espaco11_6.pack()
+    textodica11pt11.pack()
+    textodica11pt12.pack()
+
+
+
+    botaofechar11 = ttk.Button(modal11, text="Fechar", command=modal11.destroy)
+    botaofechar11.pack(pady=20)
+
+
    # Tela inicial
    dadostempobot = tk.Button(root, text="Capturar informações", command=zonatempo)
    dadostempobot.pack()
@@ -298,7 +646,6 @@ try:
 
 
 
-
    previsaoarea = tk.Canvas(root, width=160, height=200)
    previsaoarea.place(x=50, y=350)
    previsaoarea.create_rectangle (0.5, 0.5, 200, 200, fill="#765827")
@@ -324,8 +671,6 @@ try:
    label_data.place(x=727, y=125)
    label_hora.place(x=835, y=160)
    atualizar_data()
-
-
 
 
 
@@ -459,7 +804,7 @@ try:
    dica1quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica1=Label(dicasjanela, text='Preparação do solo', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica1.place(x=75, y=165)
-   botaodica1 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica1 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica1)
    botaodica1.place(x=127, y=210)
 
    dica2quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -467,7 +812,7 @@ try:
    dica2quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica2=Label(dicasjanela, text='Seleção de sementes', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica2.place(x=300, y=165)
-   botaodica2 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica2 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica2)
    botaodica2.place(x=357, y=210)
 
    dica3quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -475,7 +820,7 @@ try:
    dica3quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica3=Label(dicasjanela, text='Cultivares porte ereto', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica3.place(x=525, y=165)
-   botaodica3 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica3 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica3)
    botaodica3.place(x=587, y=210)
 
    dica4quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -483,7 +828,7 @@ try:
    dica4quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica4=Label(dicasjanela, text='Cultivares porte rasteiro', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica4.place(x=747, y=165)
-   botaodica4 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica4 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica4)
    botaodica4.place(x=817, y=210)
 
 # ============Fileira 2
@@ -493,7 +838,7 @@ try:
    dica5quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica5=Label(dicasjanela, text='Plantio', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica5.place(x=124, y=285)
-   botaodica5 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica5 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica5)
    botaodica5.place(x=127, y=330)
 
    dica6quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -501,7 +846,7 @@ try:
    dica6quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica6=Label(dicasjanela, text='Irrigação', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica6.place(x=344, y=285)
-   botaodica6 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica6 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica6)
    botaodica6.place(x=357, y=330)
    
    dica7quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -509,7 +854,7 @@ try:
    dica7quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica7=Label(dicasjanela, text='Adubagem', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica7.place(x=565, y=285)
-   botaodica7 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica7 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica7)
    botaodica7.place(x=587, y=330)
 
    dica8quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -517,7 +862,7 @@ try:
    dica8quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica8=Label(dicasjanela, text='Controle de pragas', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica8.place(x=765, y=285)
-   botaodica8 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica8 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica8)
    botaodica8.place(x=817, y=330)
 
 # ============Fileira 3
@@ -527,7 +872,7 @@ try:
    dica9quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica9=Label(dicasjanela, text='Colheita', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica9.place(x=120, y=405)
-   botaodica9 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica9 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica9)
    botaodica9.place(x=127, y=450)
 
    dica10quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -535,7 +880,7 @@ try:
    dica10quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica10=Label(dicasjanela, text='Pós-colheita', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica10.place(x=335, y=405)
-   botaodica10 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica10 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica10)
    botaodica10.place(x=357, y=450)
    
    dica11quadro = tk.Canvas(dicasjanela, width=200, height=100)
@@ -543,7 +888,7 @@ try:
    dica11quadro.create_rectangle (0.5, 0.5, 210, 110, fill="#765827")
    labeldica11=Label(dicasjanela, text='Variedades de amendoim', font=('Helvetica', 12, 'bold'), fg='Black', bg='#765827')
    labeldica11.place(x=513, y=405)
-   botaodica11 = tk.Button(dicasjanela, text="Ver dica")
+   botaodica11 = tk.Button(dicasjanela, text="Ver dica", command=modal_dica11)
    botaodica11.place(x=587, y=450)
 
 
