@@ -745,9 +745,11 @@ try:
    dicasbotao.pack()
    dicasbotao.place(x=829, y=265)
 
-   pesquisaarea = tk.Canvas(root, width=1500, height=110)
-   pesquisaarea.place(x=0, y=0)
-   pesquisaarea.create_rectangle (0, 0, 986, 500, fill="#765827", width=2)
+   headerarea = tk.Canvas(root, width=1500, height=110)
+   headerarea.place(x=0, y=0)
+   headerarea.create_rectangle (0, 0, 986, 500, fill="#765827", width=2)
+   labeltitulo=Label(root, text='PSA - Planting Schedule Advisor', font=('Helvetica', 40, 'bold'), fg='black', bg='#765827')
+   labeltitulo.place(x=85, y=25)
 
    label1=Label(root, text='Tempo', font=('Helvetica', 13, 'bold'), fg='black', bg='#EAC696')
    label1.place(x=50, y=140)
@@ -823,9 +825,11 @@ try:
    relatjanela.configure(bg='#EAC696')
    relatjanela.resizable(False, False)
 
-   pesquisaarea = tk.Canvas(relatjanela, width=1500, height=110)
-   pesquisaarea.place(x=0, y=0)
-   pesquisaarea.create_rectangle (0, 0, 986, 500, fill="#765827", width=2)
+   headerarea = tk.Canvas(relatjanela, width=1500, height=110)
+   headerarea.place(x=0, y=0)
+   headerarea.create_rectangle (0, 0, 986, 500, fill="#765827", width=2)
+   labeltitulo=Label(relatjanela, text='PSA - Planting Schedule Advisor', font=('Helvetica', 40, 'bold'), fg='black', bg='#765827')
+   labeltitulo.place(x=85, y=25)
 
    botaoinicio = tk.Button(relatjanela, text="Voltar para Janela Principal", command=voltartelainicial)
    botaoinicio.place(x=25, y=350)
@@ -925,9 +929,11 @@ try:
    dicasjanela.configure(bg='#EAC696')
    dicasjanela.resizable(False, False)
 
-   pesquisaarea = tk.Canvas(dicasjanela, width=1500, height=110)
-   pesquisaarea.place(x=0, y=0)
-   pesquisaarea.create_rectangle (0, 0, 986, 500, fill="#765827", width=2)
+   headerarea = tk.Canvas(dicasjanela, width=1500, height=110)
+   headerarea.place(x=0, y=0)
+   headerarea.create_rectangle (0, 0, 986, 500, fill="#765827", width=2)
+   labeltitulo=Label(dicasjanela, text='PSA - Planting Schedule Advisor', font=('Helvetica', 40, 'bold'), fg='black', bg='#765827')
+   labeltitulo.place(x=85, y=25)
 
    botaoinicio = tk.Button(dicasjanela, text="Voltar para Janela Principal", command=voltartelainicial)
    botaoinicio.place(x=770, y=405)
