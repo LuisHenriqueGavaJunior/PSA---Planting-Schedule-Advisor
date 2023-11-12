@@ -282,7 +282,7 @@ try:
       motivolinha4 = "adequado para o plantio desta cultura."
       motivolinha5 = ""
       motivo = "O local onde o plantio será realizado não é bom para o amendoim. Além disso, não estamos num momento adequado para o plantio desta cultura."
-    
+
     elif (mes == '03' or mes == '04' or mes == '09' or mes == '10') and (Estado == "Acre" or Estado == "Roraima" or Estado == "Amapá" or Estado == "Amazonas" or Estado == "Rondônia"):
       momento_para_plantio = "Condições medianas:"
       motivolinha1 = "O local onde o plantio será realizado"
@@ -295,28 +295,28 @@ try:
     elif (mes == '01' or mes == '02' or mes == '07' or mes == '08' or mes == '12') and (Estado == "Bahia" or Estado == "Pernambuco" or Estado == "Maranhão" or Estado == "Piauí" or Estado == "Ceará"):
       momento_para_plantio = "Condições medianas:"
       motivolinha1 = "O local onde o plantio será realizado"
-      motivolinha2 = "é bom para o amendoim, mas é uma péssima"
-      motivolinha3 = "época para esta cultura. É recomendável"
-      motivolinha4 = "esperar uma época melhor para começar a"
-      motivolinha5 = "plantar."
+      motivolinha2 = "é bom para o amendoim, mas é uma"
+      motivolinha3 = "péssima época para esta cultura. É"
+      motivolinha4 = "recomendável esperar uma época melhor"
+      motivolinha5 = "para começar a plantar."
       motivo = "O local onde o plantio será realizado é bom para o amendoim, mas é uma péssima época para esta cultura. É recomendável esperar uma época melhor para começar a plantar."
 
     elif (mes == '01' or mes == '02' or mes == '07' or mes == '08' or mes == '12') and (Estado == "São Paulo" or Estado == "Minas Gerais" or Estado == "Goiás" or Estado == "Mato Grosso do Sul" or Estado == "Santa Catarina"):
       momento_para_plantio = "Condições medianas:"
       motivolinha1 = "O local onde o plantio será realizado"
-      motivolinha2 = "é excelente para o amendoim, mas é uma"
-      motivolinha3 = "péssima época para esta cultura."
-      motivolinha4 = "É recomendável esperar uma época melhor"
-      motivolinha5 = "para começar a plantar."
+      motivolinha2 = "é excelente para o amendoim, mas é"
+      motivolinha3 = "uma péssima época para esta cultura."
+      motivolinha4 = "É recomendável esperar uma época"
+      motivolinha5 = "melhor para começar a plantar."
       motivo = "O local onde o plantio será realizado é excelente para o amendoim, mas é uma péssima época para esta cultura. É recomendável esperar uma época melhor para começar a plantar."
 
     elif (mes == '05' or mes == '06' or mes == '11') and (Estado == "Acre" or Estado == "Roraima" or Estado == "Amapá" or Estado == "Amazonas" or Estado == "Rondônia"):
       momento_para_plantio = "Condições medianas:"
-      motivolinha1 = "O local onde o plantio será realizado"
-      motivolinha2 = "é ruim para o amendoim, mas é uma"
-      motivolinha3 = "excelente época para esta cultura."
-      motivolinha4 = "É necessário uma análise mais profunda com"
-      motivolinha5 = "um profissional antes de começar a plantar."
+      motivolinha1 = "O local onde o plantio será realizado é"
+      motivolinha2 = "ruim para o amendoim, mas é uma"
+      motivolinha3 = "excelente época para a cultura. É"
+      motivolinha4 = "necessário uma análise mais profunda"
+      motivolinha5 = "com um profissional antes de plantar."
       motivo = "O local onde o plantio será realizado é ruim para o amendoim, mas é uma excelente época para esta cultura. É necessário uma análise mais profunda com um profissional antes de começar a plantar."
 
     elif (mes == '03' or mes == '04' or mes == '09' or mes == '10') and (Estado == "Bahia" or Estado == "Pernambuco" or Estado == "Maranhão" or Estado == "Piauí" or Estado == "Ceará"):
