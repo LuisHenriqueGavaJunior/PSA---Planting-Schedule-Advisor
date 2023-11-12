@@ -21,7 +21,7 @@ try:
    icone = tk.PhotoImage(file="imagens/icone.ppm")
    root.iconphoto(True, icone)
 
-
+# ============ Definição de funções
 
    def mostrarjanelarelatorios():
     root.withdraw()  # Esconda a janela principal
