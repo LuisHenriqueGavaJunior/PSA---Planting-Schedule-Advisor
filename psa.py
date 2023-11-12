@@ -29,11 +29,16 @@ try:
 
    def mostrarjaneladicas():
     root.withdraw()  # Esconda a janela principal
-    dicasjanela.deiconify()  # 
+    dicasjanela.deiconify()  # Exiba a segunda janela
 
-   def voltartelainicial():
+   def voltartelainicialdicas():
     relatjanela.withdraw()  # Esconda a segunda janela
     root.deiconify()  # Exiba a janela principal
+
+   def voltartelainicialrelatorios():
+    dicasjanela.withdraw()  # Esconda a segunda janela
+    root.deiconify()  # Exiba a janela principal
+
 
    def atualizar_data():
     # Função para atualizar a data
@@ -831,7 +836,7 @@ try:
    labeltitulo=Label(relatjanela, text='PSA - Planting Schedule Advisor', font=('Helvetica', 40, 'bold'), fg='black', bg='#765827')
    labeltitulo.place(x=85, y=25)
 
-   botaoinicio = tk.Button(relatjanela, text="Voltar para Janela Principal", command=voltartelainicial)
+   botaoinicio = tk.Button(relatjanela, text="Voltar para Janela Principal", command=voltartelainicialdicas)
    botaoinicio.place(x=25, y=350)
 
    botaorelatorio = tk.Button(relatjanela, text="Gerar relatórios", command=relatorios)
@@ -935,7 +940,7 @@ try:
    labeltitulo=Label(dicasjanela, text='PSA - Planting Schedule Advisor', font=('Helvetica', 40, 'bold'), fg='black', bg='#765827')
    labeltitulo.place(x=85, y=25)
 
-   botaoinicio = tk.Button(dicasjanela, text="Voltar para Janela Principal", command=voltartelainicial)
+   botaoinicio = tk.Button(dicasjanela, text="Voltar para Janela Principal", command=voltartelainicialrelatorios)
    botaoinicio.place(x=770, y=405)
 
 # ============Fileira 1
